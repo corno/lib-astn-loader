@@ -1,0 +1,33 @@
+{
+  "author": "Corno",
+  "bin": {},
+  "dependencies": {
+    "lib-astn-expect": "^0.0.0",
+    "lib-astn-mrshlschema": "^0.0.0",
+    "lib-astn-parser": "^0.0.0",
+    "lib-astn-tokenizer": "^0.0.0",
+    "lib-astn-unmarshall": "^0.0.0",
+    "pareto-core-lib": "^0.4.0",
+    "pareto-core-resolve": "^0.14.0"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "keywords": [],
+  "main": "./dist/index.js",
+  "bugs": {
+    "url": "https://github.com/corno/astn/issues"
+  },
+  "description": "",
+  "homepage": "https://github.com/corno/astn#readme",
+  "license": "ISC",
+  "name": "astn-loader-lib",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corno/astn-loader.git"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.23.0",
+  "content-fingerprint": "49be86c16bc150635d34fe39e150d4976cf96ca9"
+}
