@@ -48,7 +48,7 @@ export function createDocumentLoader<Annotation>(
                     },
                     handleSchemaError: () => {
                         $i.logError({
-                            error: ["schema error", {}],
+                            error: ["schema error", null],
                             annotation: null,
                         })
                     },
@@ -74,7 +74,7 @@ export function createDocumentLoader<Annotation>(
                 return doOptionalContextSchema(
                     () => {
                         $i.logError({
-                            error: ["found both context and internal schema", {}],
+                            error: ["found both context and internal schema", null],
                             annotation: $.embeddedSchemaAnnotation
                         })
                         throw new Error("STRIP REDUNDANT EMBEDDED SCHEMA")
@@ -106,7 +106,7 @@ export function createDocumentLoader<Annotation>(
                 return doOptionalContextSchema(
                     () => {
                         $i.logError({
-                            error: ["found both context and internal schema", {}],
+                            error: ["found both context and internal schema", null],
                             annotation: $.token.annotation
                         })
                         return $i.handler
@@ -126,7 +126,7 @@ export function createDocumentLoader<Annotation>(
                                 },
                                 handleSchemaError: () => {
                                     $i.logError({
-                                        error: ["schema error", {}],
+                                        error: ["schema error", null],
                                         annotation: $.token.annotation,
                                     })
                                 },

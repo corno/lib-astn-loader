@@ -113,7 +113,7 @@ export function createExternalSchemaCache<Annotation>(
                                     const subscribers = schema.state[1].subscribers
                                     function cb2($: CreateUnmarshallStack<Annotation> | null) {
                                         if ($ === null) {
-                                            schema.state = ["failed", {}]
+                                            schema.state = ["failed", null]
                                             subscribers.forEach((s) => {
                                                 s.onFailed()
                                             })
@@ -146,7 +146,7 @@ export function createExternalSchemaCache<Annotation>(
                                             handler: {
                                                 onEmbeddedSchema: ($) => {
                                                     lese({
-                                                        error: ["header is not a schema reference", {}],
+                                                        error: ["header is not a schema reference", null],
                                                         range: $.embeddedSchemaAnnotation.range,
                                                     })
                                                     return {
@@ -156,7 +156,7 @@ export function createExternalSchemaCache<Annotation>(
                                                 },
                                                 onNoInternalSchema: ($) => {
                                                     lese({
-                                                        error: ["header is not a schema reference", {}],
+                                                        error: ["header is not a schema reference", null],
                                                         range: null,
                                                     })
                                                     return {
@@ -209,8 +209,8 @@ export function createExternalSchemaCache<Annotation>(
                                                                         },
                                                                     )(
                                                                         {
-                                                                            onDuplicateEntry: ["ignore", {}],
-                                                                            duplicateEntrySeverity: ["error", {}],
+                                                                            onDuplicateEntry: ["ignore", null],
+                                                                            duplicateEntrySeverity: ["error", null],
                                                                         }
                                                                     ),
                                                                 )({

@@ -15,4 +15,4 @@ export type ExternalSchemaError =
 | ["treeparser", apl.TreeParserError]
 | ["deserialize", aml.DeserializeError]
 | ["expect", ael.ExpectIssue]
-| ["header is not a schema reference", {}]
+| ["header is not a schema reference", null]
