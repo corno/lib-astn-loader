@@ -1,5 +1,5 @@
 import * as pl from "pareto-core-lib"
-import { IExternalSchemaCache } from "../interface"
+import { IExternalSchemaCache } from "../../interface"
 import * as ata from "astn-tokenizer-api"
 import { ExternalSchemaError } from "../interface/types/ExternalSchemaError"
 import * as tc from "astn-tokenconsumer-api"
@@ -23,7 +23,7 @@ const mrshlschemaLib = aml.init()
 const expectLib = ael.init()
 const unmarshallLib = aul.init()
 
-export function createExternalSchemaCache<Annotation>(
+export function createExternalSchemaCache<PAnnotation>(
     $i: {
         logExternalSchemaError: (
             $: {
@@ -35,17 +35,17 @@ export function createExternalSchemaCache<Annotation>(
     $c: {
         getSchemaData: GetResource<Path, string>,
     },
-): IExternalSchemaCache<Annotation> {
+): IExternalSchemaCache<PAnnotation> {
 
-    type CreateUnmarshallStack<Annotation> = (
+    type CreateUnmarshallStack<PAnnotation> = (
         $i: {
-            handler: th.ITypedHandler<Annotation>
+            handler: th.ITypedHandler<PAnnotation>
         }
-    ) => tc.ITokenConsumer<Annotation>
+    ) => tc.ITokenConsumer<PAnnotation>
     type Subscriber = {
         onFailed: () => void
         onNoEntity: () => void
-        onSuccess: (createUnmarshaller: CreateUnmarshallStack<Annotation>) => void
+        onSuccess: (createUnmarshaller: CreateUnmarshallStack<PAnnotation>) => void
     }
     type SchemaState =
         | ["awaiting", {
@@ -56,7 +56,7 @@ export function createExternalSchemaCache<Annotation>(
         | ["no entity", {
         }]
         | ["success", {
-            createUnmarshaller: CreateUnmarshallStack<Annotation>
+            createUnmarshaller: CreateUnmarshallStack<PAnnotation>
         }]
     type SchemaData = {
         state: SchemaState
@@ -111,7 +111,7 @@ export function createExternalSchemaCache<Annotation>(
                                         throw new Error("UNEXPECTED")
                                     }
                                     const subscribers = schema.state[1].subscribers
-                                    function cb2($: CreateUnmarshallStack<Annotation> | null) {
+                                    function cb2($: CreateUnmarshallStack<PAnnotation> | null) {
                                         if ($ === null) {
                                             schema.state = ["failed", null]
                                             subscribers.forEach((s) => {
@@ -227,8 +227,8 @@ export function createExternalSchemaCache<Annotation>(
                                                                                 $,
                                                                                 convertResolveRegistry,
                                                                             )
-                                                                            const createUnmarshallStack: CreateUnmarshallStack<Annotation> = ($i) => {
-                                                                                return parserLib.createCreateTreeParser<Annotation>(
+                                                                            const createUnmarshallStack: CreateUnmarshallStack<PAnnotation> = ($i) => {
+                                                                                return parserLib.createCreateTreeParser<PAnnotation>(
                                                                                     {
                                                                                         onError: ($) => {
                                                                                             lie({
@@ -239,7 +239,7 @@ export function createExternalSchemaCache<Annotation>(
                                                                                     },
                                                                                 )({
                                                                                     handler: {
-                                                                                        root: unmarshallLib.createCreateUnmarshaller<Annotation>(
+                                                                                        root: unmarshallLib.createCreateUnmarshaller<PAnnotation>(
                                                                                             {
                                                                                                 onError: ($) => {
                                                                                                     lie({

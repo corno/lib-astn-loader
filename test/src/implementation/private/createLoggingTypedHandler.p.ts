@@ -20,10 +20,10 @@ type TV =
     | ["onUnexpectedOption", null]
     | ["onTaggedUnionEnd", null]
 
-export function createLoggingTypedHandler<Annotation>(
+export function createLoggingTypedHandler<PAnnotation>(
     log: (tv: TV) => void
-): th.ITypedHandler<Annotation> {
-    function createLoggingTypedValueHandler(): th.ITypedValueHandler<Annotation> {
+): th.ITypedHandler<PAnnotation> {
+    function createLoggingTypedValueHandler(): th.ITypedValueHandler<PAnnotation> {
         return {
             onDictionary: ($) => {
                 log(["onDictionary", null])
@@ -56,7 +56,7 @@ export function createLoggingTypedHandler<Annotation>(
 
         }
     }
-    function createLoggingTypedDictionaryHandler(): th.IDictionaryHandler<Annotation> {
+    function createLoggingTypedDictionaryHandler(): th.IDictionaryHandler<PAnnotation> {
         return {
             onEntry: () => {
                 log(["onEntry", null])
@@ -68,7 +68,7 @@ export function createLoggingTypedHandler<Annotation>(
             },
         }
     }
-    function createLoggingTypedGroupHandler(): th.IGroupHandler<Annotation> {
+    function createLoggingTypedGroupHandler(): th.IGroupHandler<PAnnotation> {
         return {
             onProperty: () => {
                 log(["onProperty", null])
@@ -83,7 +83,7 @@ export function createLoggingTypedHandler<Annotation>(
             }
         }
     }
-    function createLoggingTypedListHandler(): th.IListHandler<Annotation> {
+    function createLoggingTypedListHandler(): th.IListHandler<PAnnotation> {
         return {
             onElement: () => {
                 log(["onElement", null])
@@ -94,7 +94,7 @@ export function createLoggingTypedHandler<Annotation>(
             }
         }
     }
-    function createLoggingTypedTaggedUnionHandler(): th.ITypedTaggedUnionHandler<Annotation> {
+    function createLoggingTypedTaggedUnionHandler(): th.ITypedTaggedUnionHandler<PAnnotation> {
         return {
             onOption: () => {
                 log(["onOption", null])

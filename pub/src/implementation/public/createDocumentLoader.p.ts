@@ -1,35 +1,39 @@
-import * as pa from "pareto-core-types"
+import * as pt from "pareto-core-types"
 import * as pl from "pareto-core-lib"
-import * as apl from "astn-parser-lib"
-import * as th from "astn-typedhandlers-api"
-import * as inf from "../interface"
-import * as tc from "astn-tokenconsumer-api"
+
+
+import * as apl from "lib-astn-parser"
+import * as th from "api-astn-typedhandlers"
+import * as tc from "api-astn-tokenconsumer"
+
+import * as api from "../../interface"
+
 
 const parserLib = apl.init()
 
 const contextSchemaName = "schema.astn-schema"
 
 
-export function createDocumentLoader<Annotation>(
+export function createDocumentLoader<PAnnotation>(
     $: {
         id: string
     },
     $i: {
         logError: (
             $: {
-                error: inf.InstanceError,
+                error: api.InstanceError,
                 annotation: Annotation | null,
             }
         ) => void
-        handler: th.ITypedHandler<Annotation>
+        handler: th.ITypedHandler<PAnnotation>
     },
-    contextCache: inf.IExternalSchemaCache<Annotation>,
-    referenceCache: inf.IExternalSchemaCache<Annotation>,
-    startAsync: inf.StartAsync
-): tc.ITokenConsumer<Annotation> {
+    contextCache: api.IExternalSchemaCache<PAnnotation>,
+    referenceCache: api.IExternalSchemaCache<PAnnotation>,
+    $a: api.StartAsync
+): tc.ITokenConsumer<PAnnotation> {
     function doOptionalContextSchema(
-        handleSuccess: () => th.ITypedHandler<Annotation>,
-        handleNotExists: () => tc.ITokenConsumer<Annotation>,
+        handleSuccess: () => th.ITypedHandler<PAnnotation>,
+        handleNotExists: () => tc.ITokenConsumer<PAnnotation>,
     ) {
         if ($.id === contextSchemaName) {
             //this *is* the context schema
@@ -55,11 +59,11 @@ export function createDocumentLoader<Annotation>(
                     handleSuccess: handleSuccess,
                     handleNoEntity: handleNotExists
                 },
-                startAsync
+                $a
             )
         }
     }
-    return parserLib.createCreateHeaderParser<Annotation>(
+    return parserLib.createCreateHeaderParser<PAnnotation>(
         {
             onError: ($) => {
                 $i.logError({
@@ -143,7 +147,7 @@ export function createDocumentLoader<Annotation>(
                                     }
                                 }
                             },
-                            startAsync
+                            $a
                         )
                     }
                 )

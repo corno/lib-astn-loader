@@ -1,26 +1,26 @@
 import * as h from "astn-handlers-api"
 
-export function createDummyObjectHandler<Annotation>(): h.IObjectHandler<Annotation> {
+export function createDummyObjectHandler<PAnnotation>(): h.IObjectHandler<PAnnotation> {
     return {
         property: () => createDummyRequiredValueHandler(),
         anonymousProperty: () => createDummyValueHandler(),
         onEnd: () => { },
     }
 }
-export function createDummyArrayHandler<Annotation>(): h.IArrayHandler<Annotation> {
+export function createDummyArrayHandler<PAnnotation>(): h.IArrayHandler<PAnnotation> {
     return {
         element: () => createDummyValueHandler(),
         onEnd: () => { }
     }
 }
-export function createDummyRequiredValueHandler<Annotation>(): h.IRequiredValueHandler<Annotation> {
+export function createDummyRequiredValueHandler<PAnnotation>(): h.IRequiredValueHandler<PAnnotation> {
     return {
         missing: () => { },
         exists: createDummyValueHandler()
     }
 
 }
-export function createDummyTaggedUnionHandler<Annotation>(): h.ITaggedUnionHandler<Annotation> {
+export function createDummyTaggedUnionHandler<PAnnotation>(): h.ITaggedUnionHandler<PAnnotation> {
     return {
         option: () => createDummyRequiredValueHandler(),
         missingOption: () => createDummyRequiredValueHandler(),
@@ -28,7 +28,7 @@ export function createDummyTaggedUnionHandler<Annotation>(): h.ITaggedUnionHandl
     }
 }
 
-export function createDummyValueHandler<Annotation>(): h.IValueHandler<Annotation> {
+export function createDummyValueHandler<PAnnotation>(): h.IValueHandler<PAnnotation> {
 
     return {
         object: () => createDummyObjectHandler(),

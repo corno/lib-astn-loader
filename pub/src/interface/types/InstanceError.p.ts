@@ -1,8 +1,8 @@
 
-import * as apl from "astn-parser-lib"
-import * as aul from "astn-unmarshall-lib"
+import * as apl from "lib-astn-parser"
+import * as aul from "lig-astn-unmarshall"
 
-export type InstanceError =
+export type TInstanceError =
 | ["schema error", null]
 | ["treeparser", apl.TreeParserError]
 | ["headerparser", apl.HeaderError]
