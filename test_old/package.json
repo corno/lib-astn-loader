@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "api-astn-handlers": "^0.3.0",
+    "api-astn-typedhandlers": "^0.2.0",
+    "pareto-core-exe": "^0.13.0",
+    "res-pareto-filesystem": "^0.26.0"
+  }
+}

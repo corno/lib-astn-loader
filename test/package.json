@@ -1,9 +1,7 @@
 {
   "dependencies": {
-    "api-astn-handlers": "^0.0.0",
-    "lib-astn-tokenizer": "^0.0.0",
-    "api-astn-typedhandlers": "^0.0.0",
-    "pareto-core-exe": "^0.3.0",
-    "res-pareto-filesystem": "^0.0.0"
+    "lib-pareto-test": "^0.7.0",
+    "pareto-core-exe": "^0.13.0",
+    "pareto-core-lib": "^0.13.0"
   }
 }

@@ -1,6 +1,6 @@
-import * as pa from "pareto-core-types"
-import { INonValueAsync } from "./NonValueAsync"
+// import * as pa from "pareto-core-types"
+// import { INonValueAsync } from "./NonValueAsync"
 
-export function fireAndForget($: INonValueAsync) {
-    $.execute(() => { })
-}
+// export function fireAndForget($: INonValueAsync) {
+//     $.execute(() => { })
+// }
