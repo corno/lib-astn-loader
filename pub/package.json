@@ -1,31 +1,19 @@
 {
   "author": "Corno",
-  "bin": {},
+  "license": "ISC",
+  "description": "loads an ASTN Document from the filesystem",
+
   "dependencies": {
-    "pareto-core": "^0.0.5",
-    "pareto-core-lib": "^0.17.0",
-    "pareto-core-raw": "^0.7.0",
+    "pareto-core-lib": "^0.18.1",
+    "pareto-core-raw": "^0.7.4",
     "pareto-core-state": "^0.12.0"
   },
   "files": [
-    "dist",
-    "data"
+    "dist"
   ],
-  "keywords": [],
-  "main": "./dist/index.js",
-  "bugs": {
-    "url": "https://github.com/corno/astn/issues"
-  },
-  "description": "",
-  "homepage": "https://github.com/corno/astn#readme",
-  "license": "ISC",
-  "name": "astn-loader-lib",
   "repository": {
-    "type": "git",
-    "url": "git+https://github.com/corno/astn-loader.git"
+    "type": "git"
   },
-  "types": "dist/index.d.ts",
-  "version": "0.23.0",
-  "interface-fingerprint": "044c1ed1f217da9e0a7bd3c7ee8865e02fb23dbf",
-  "content-fingerprint": "7ece4ca3f8a7d4f7a82c05c78cff0c90d0d021d1"
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts"
 }
