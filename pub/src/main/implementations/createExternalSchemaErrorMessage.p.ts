@@ -1,4 +1,4 @@
-// import * as pl from "pareto-core-lib"
+// import * as pl from 'pareto-core-lib'
 // import * as atl from "astn-tokenizer-lib"
 // import * as apl from "astn-parser-lib"
 // import * as ael from "astn-expect-lib"

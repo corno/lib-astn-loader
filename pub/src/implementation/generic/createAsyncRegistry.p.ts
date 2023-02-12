@@ -1,4 +1,4 @@
-// import * as pa from "pareto-core-types"
+// import * as pa from 'pareto-core-types'
 // import { IAsyncRegistry } from "../../interface/interfaces/AsyncRegistry"
 // import { INonValueAsync } from "./NonValueAsync"
 

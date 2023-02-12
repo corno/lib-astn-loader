@@ -1,4 +1,4 @@
-import * as pt from "pareto-core-types"
+import * as pt from 'pareto-core-types'
 // import * as apl from "lib-astn-parser"
 // import * as aul from "lig-astn-unmarshall"
 

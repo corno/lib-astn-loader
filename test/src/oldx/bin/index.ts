@@ -1,5 +1,5 @@
-import * as pb from "pareto-core-exe"
-import * as pl from "pareto-core-lib"
+import * as pb from 'pareto-core-exe'
+import * as pl from 'pareto-core-lib'
 import * as ata from "astn-tokenizer-api"
 import * as lib from "../../../../lib"
 import * as atl from "astn-tokenizer-lib"

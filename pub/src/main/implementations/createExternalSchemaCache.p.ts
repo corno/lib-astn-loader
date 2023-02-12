@@ -1,4 +1,4 @@
-// import * as pl from "pareto-core-lib"
+// import * as pl from 'pareto-core-lib'
 // import { IExternalSchemaCache } from "../../interface"
 // import * as ata from "astn-tokenizer-api"
 // import { ExternalSchemaError } from "../interface/types/ExternalSchemaError"

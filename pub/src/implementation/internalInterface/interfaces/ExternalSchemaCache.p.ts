@@ -1,4 +1,4 @@
-// import * as pt from "pareto-core-types"
+// import * as pt from 'pareto-core-types'
 // import * as tc from "astn-tokenconsumer-api"
 // import * as th from "astn-typedhandlers-api"
 // import { IAsyncRegistry, StartAsync } from "./AsyncRegistry"
