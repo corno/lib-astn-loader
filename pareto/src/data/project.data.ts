@@ -9,7 +9,7 @@ import { $ as api } from "./api.data"
 export const $: mproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "loads an ASTN Document from the filesystem",
-    'license': "ISC",
+    'license': "TBD",
 
     'dependencies': d({
         "lib-astn-dummyhandlers": {},
@@ -17,6 +17,7 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
     'type': ['library', {
         'main': {
             'definition': api,
+            'implementation': ['manual', {}],
         },
         'submodules': d({
         }),
