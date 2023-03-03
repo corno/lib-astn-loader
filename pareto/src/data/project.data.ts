@@ -5,6 +5,9 @@ import * as mproject from "lib-pareto-typescript-project/dist/submodules/project
 const d = pd.d
 
 import { $ as api } from "./api.data"
+import { $ as glossary } from "./glossary.data"
+
+import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
 export const $: mproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
@@ -12,12 +15,25 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
     'license': "TBD",
 
     'dependencies': d({
-        "lib-astn-dummyhandlers": {},
+        "lib-astn-dummyhandlers": null,
     }),
     'type': ['library', {
         'main': {
-            'definition': api,
-            'implementation': ['manual', {}],
+            'definition': {
+                'glossary': {
+                    'root': glossary,
+                    'imports': d({
+                        //"common": "glo-pareto-common",
+                    }),
+                },
+                'api': {
+                    'root': api,
+                    'imports': d({
+                        "common": external("glo-pareto-common"),
+                    }),
+                }
+            },
+            'implementation': ['typescript', null],
         },
         'submodules': d({
         }),
@@ -27,11 +43,11 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
             }),
             'glossary': {
                 'functions': d({}),
-                'imports': d({}),
                 'parameters': d({}),
                 'types': d({}),
                 'interfaces': d({}),
             },
+            'imports': d({}),
         }
     }],
 }
