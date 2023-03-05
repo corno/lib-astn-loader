@@ -1,5 +1,5 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcommon from "glo-pareto-common"
+import * as g_common from "glo-pareto-common"
 
 export type API = {}

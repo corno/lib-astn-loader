@@ -1,16 +1,18 @@
 
 import * as pm from 'pareto-core-state'
+import * as pa from 'pareto-core-async'
 import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
 
 import * as pub from "../../../../../pub"
 
 import * as test from "lib-pareto-test"
 
-export const $$: api.CgetTestSet = () => {
+import { CgetTestSet} from "../definition/api.generated"
 
-    const builder = pm.createUnsafeDictionaryBuilder<test.TTestElement>()
+export const $$: CgetTestSet = () => {
+
+    const builder = pm.createUnsafeDictionaryBuilder<test.T.TestElement>()
     function createTest(name: string, actual: string, expected: string) {
         builder.add(name, {
             type: ["test", {
@@ -22,7 +24,7 @@ export const $$: api.CgetTestSet = () => {
         })
     }
 
-    return pl.asyncValue({
+    return pa.asyncValue({
         elements: builder.getDictionary()
     })
 }

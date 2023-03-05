@@ -7,7 +7,7 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -18,6 +18,7 @@ export const $: mglossary.T.Glossary<string> = {
     'parameters': d({}),
     'types': d({
     }),
+    'builders': d({}),
     'interfaces': d({
     }),
     'functions': d({
