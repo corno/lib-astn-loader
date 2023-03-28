@@ -1,5 +1,5 @@
 
-import * as th from "astn-typedhandlers-api"
+import * as g_th from "glo-astn-typedhandlers"
 
 type TV =
     | ["onEntry", null]
@@ -22,97 +22,98 @@ type TV =
 
 export function createLoggingTypedHandler<PAnnotation>(
     log: (tv: TV) => void
-): th.ITypedHandler<PAnnotation> {
-    function createLoggingTypedValueHandler(): th.ITypedValueHandler<PAnnotation> {
+): g_th.ASYNC.I.ValueHandler<PAnnotation> {
+    function createLoggingTypedValueHandler(): g_th.ASYNC.I.ValueHandler<PAnnotation> {
         return {
-            onDictionary: ($) => {
+            'dictionary': ($) => {
                 log(["onDictionary", null])
                 return createLoggingTypedDictionaryHandler()
             },
-            onGroup: ($) => {
+            'group': ($) => {
                 log(["onGroup", null])
                 return createLoggingTypedGroupHandler()
             },
-            onList: ($) => {
+            'list': ($) => {
                 log(["onList", null])
                 return createLoggingTypedListHandler()
             },
-            onMultilineString: ($) => {
+            'multilineString': ($) => {
                 log(["onMultilineString", null])
                 return createLoggingTypedDictionaryHandler()
             },
-            onSimpleString: ($) => {
+            'simpleString': ($) => {
                 log(["onSimpleString", null])
                 return createLoggingTypedDictionaryHandler()
             },
-            onTaggedUnion: ($) => {
+            'taggedUnion': ($) => {
                 log(["onTaggedUnion", null])
                 return createLoggingTypedTaggedUnionHandler()
             },
-            onTypeReference: ($) => {
+            'typeReference': ($) => {
                 log(["onTypeReference", null])
                 return createLoggingTypedValueHandler()
             },
 
         }
     }
-    function createLoggingTypedDictionaryHandler(): th.IDictionaryHandler<PAnnotation> {
+    function createLoggingTypedDictionaryHandler(): g_th.ASYNC.I.DictionaryHandler<PAnnotation> {
         return {
-            onEntry: () => {
+            'data': () => {
                 log(["onEntry", null])
                 return createLoggingTypedValueHandler()
             },
-            onClose: () => {
+            'end': () => {
                 log(["onDictionaryClose", null])
 
             },
         }
     }
-    function createLoggingTypedGroupHandler(): th.IGroupHandler<PAnnotation> {
+    function createLoggingTypedGroupHandler(): g_th.ASYNC.I.GroupHandler<PAnnotation> {
         return {
-            onProperty: () => {
-                log(["onProperty", null])
-                return createLoggingTypedValueHandler()
-            },
-            onUnexpectedProperty: () => {
-                log(["onUnexpectedProperty", null])
+            'data': {
+                'property': () => {
+                    log(["onProperty", null])
+                    return createLoggingTypedValueHandler()
+                },
+                'unexpectedProperty': () => {
+                    log(["onUnexpectedProperty", null])
 
+                },
             },
-            onClose: () => {
+            'end': () => {
                 log(["onGroupClose", null])
             }
         }
     }
-    function createLoggingTypedListHandler(): th.IListHandler<PAnnotation> {
+    function createLoggingTypedListHandler(): g_th.ASYNC.I.ListHandler<PAnnotation> {
         return {
-            onElement: () => {
+            'data': () => {
                 log(["onElement", null])
                 return createLoggingTypedValueHandler()
             },
-            onClose: () => {
+            'end': () => {
                 log(["onListClose", null])
             }
         }
     }
-    function createLoggingTypedTaggedUnionHandler(): th.ITypedTaggedUnionHandler<PAnnotation> {
+    function createLoggingTypedTaggedUnionHandler(): g_th.ASYNC.I.TaggedUnionHandler<PAnnotation> {
         return {
-            onOption: () => {
-                log(["onOption", null])
-                return createLoggingTypedValueHandler()
+            'data': {
+                'option': () => {
+                    log(["onOption", null])
+                    return createLoggingTypedValueHandler()
+                },
+                'unexpectedOption': () => {
+                    log(["onUnexpectedOption", null])
+                    return createLoggingTypedValueHandler()
+                },
             },
-            onUnexpectedOption: () => {
-                log(["onUnexpectedOption", null])
-                return createLoggingTypedValueHandler()
-            },
-            onEnd: () => {
+            'end': () => {
                 log(["onTaggedUnionEnd", null])
 
             }
         }
     }
 
-    return {
-        root: createLoggingTypedValueHandler(),
-        onEnd: () => { }
-    }
+    return createLoggingTypedValueHandler()
 }

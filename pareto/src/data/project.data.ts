@@ -41,6 +41,7 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
         'executables': d({}),
         'test': {
             'dependencies': d({
+                "glo-astn-typedhandlers": null
             }),
             'definition': {
                 'glossary': {
@@ -53,13 +54,11 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
                         },
                         'asynchronous': {
                             'interfaces': d({}),
-                            'constructors': d({}),
-                            'functions': d({}),
+                            'algorithms': d({}),
                         },
                         'synchronous': {
                             'interfaces': d({}),
-                            'constructors': d({}),
-                            'functions': d({}),
+                            'algorithms': d({}),
                         },
                     },
                     'imports': d({}),
